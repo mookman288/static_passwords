@@ -43,10 +43,12 @@ class	staticPasswords {
 				for ($i = 0; $i < $f; $i++) {
 					$this -> p	.=	($p > 0 && $c === true) ? $this -> c[array_rand($this -> c)] : $this -> n[array_rand($this -> n)];
 				}
+
+				$this -> p	.=	' ';
 			}
 
 			//Add to the password.
-			$this -> p	.=	($u > 0) ? ' ' . ucwords($this -> w[$n]) . ' ' : ' ' . $this -> w[$n] . ' ' ;
+			$this -> p	.=	($u > 0) ? ucwords($this -> w[$n]) . ' ' : $this -> w[$n] . ' ' ;
 		}
 
 		//Return the password.
