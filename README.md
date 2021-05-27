@@ -1,66 +1,56 @@
 # Static Passwords
-
 ## Developed by PxO Ink (http://pxoink.net/)
 
-### Preface
+## Preface
 
-Static Passwords is designed to generate a password, with 
-numbers, (optional) characters, and whole words from a 
-/usr/share/dict/words file, from a Debian 5 install. 
+Static Passwords is designed to generate a complex password with numbers, characters, and whole words from a Debian 5 based words file.
 
-The inspiration for this application comes from two sources: 
-(1) the xkcd comic about [password strength](http://xkcd.com/936/), 
-and (2) a call for new and interesting things on the web. 
+The goal is to take a complex password and obfuscate it using a much smaller "normal" looking password. For instance, this library could generate the following password:
 
-Concerning the xkcd comic, I understand that the whole point 
-is to create a password which you can easily remember, and the 
-truth is, this generator will not do that. However, concerning 
-creating something interesting... There's tons of password 
-generators out there, but there are few that have some weird 
-niche, like using whole words, or being compiled into a class 
-for PHP. So, there you have it. Constructive criticism welcome.
+    38 agglutinated ^ Epidermal 4 Finesses 25 motive 6 Percentile Porters quartering 55 Razzed
 
-### Efficiency
+Which could then be shortened and written down:
 
-It's not efficient. It's slow, and clunky. It weighs 707 KB. When 
-it comes to efficiency, I urge you to fork your own and innovate. 
-It's currently setup so that all of the words are loaded in through 
-an array. The `array_rand` function is used to pull words. Some 
-`mt_rand` functions determine if a word should be capitalized, 
-or if a number or character should be injected.
+    38a^E4F25m6PPq55R
 
-### Implementation and Customization
+The inspiration for this application comes from three sources:
+
+1. An xkcd comic about [password strength](http://xkcd.com/936/)
+2. A lengthily paper written for university on the topic of password strength in comparison to length and complexity
+3. The goal to create something that can trigger the memory of a long, complex password (previously known as a call for new and interesting things on the Web)
+
+Concerning the xkcd comic, I understand the original intention was to create a password which can be easily remembered. The idea here is to do the same, but take a more active role in understanding that password length and character complexity is an important and necessary pre-requisite to achieve. This password generator is an inefficient (700KB+) way to merge those two worlds. Feel free to fork your own version.
+
+## Implementation and Customization
 
 Static Passwords can be called with the following code:
 
 ```php
-	<?php
 		//Require the static passwords component.
 		require_once('static-passwords.php');
-		
+
 		//Instantiate the class.
 		$password	=	new staticPasswords();
-		
+
 		//Print the generated password.
 		print($password -> generate());
-	?>
 ```
 
 There are optional parameters which can be set:
 
 * Password strength (integer)
-* Use of random characters (boolean)
+* Use of random complex characters (boolean)
 
 ```php
 		//Print the generated password.
 		print($password -> generate(6, false));
 ```
 
-### Compatibility
+## Compatibility
 
 PHP 5.3+
 
-### License
+## License
 
 *The MIT License (MIT)*
 
